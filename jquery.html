@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Практична робота №12</title>
+        <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    </head>
+    <body>
+        <form id="registerForm">
+            <label for="name">Логін:</label>
+            <input type="text" id="name" name="name">
+          
+            <label for="password">Пароль:</label>
+            <input type="password" id="password" name="password">
+            
+            <label for="confirmPassword">Підтвердження паролю:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword">
+            
+            <button type="submit">Register</button>
+          </form>
+
+          <p id="successMessage" style="display:none;">Реєстрація успішна!</p>
+          <p id="Message" style="display:none;"></p>
+        <script>
+                $( "button" ).click(function(event) {
+            event.preventDefault();
+            if (!$( "input#name").val() || !$( "input#password").val() || !$( "input#confirmPassword").val()){
+                $( "p#Message" ).html("Заповніть, будь ласка, поля").css("display", "block").css("color", "red")
+                $( "p#successMessage" ).css("display", "none")
+            } else if ($( "input#name").length>=1 && $( "input#password").length>=1 && $( "input#confirmPassword").length>=1 && $( "input#password").val() != $( "input#confirmPassword").val()){
+              $( "p#Message" ).html("Паролі не співпадають").css("display", "block").css("color", "red")
+              $( "p#successMessage" ).css("display", "none")
+            }  
+             else if ($( "input#name").length>=1 && $( "input#password").length>=1 && $( "input#confirmPassword").length>=1 && $( "input#password").val() == $( "input#confirmPassword").val()){
+              $( "p#successMessage" ).css("display", "block").css("color", "green") 
+              $( "p#Message" ).css("display", "none")
+            }
+          })
+          </script>
+    </body>
+</html>
